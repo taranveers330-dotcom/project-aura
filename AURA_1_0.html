@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100d1c">
+<title>AURA — Personal AI Studio</title>
+<style>
+:root{--bg:#100d1c;--panel:#1a1629;--panel2:#211b34;--line:#342b4c;--text:#f5f1ff;--muted:#b6abc9;--accent:#b58cff;--accent2:#70d9e8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#30204c 0,transparent 38%),var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:22px 18px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:#100d1ceF;backdrop-filter:blur(12px);z-index:2}
+.brand{font-weight:800;letter-spacing:.22em;font-size:20px}.sub{font-size:11px;color:var(--muted);letter-spacing:.12em;margin-top:3px}
+.pill{border:1px solid #5a4779;color:#d8c4ff;border-radius:30px;padding:6px 10px;font-size:11px}
+main{max-width:900px;margin:auto;padding:20px 16px 100px}.hero{padding:25px 20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#211934,#171326 65%,#172330);text-align:center}
+.orb{width:76px;height:76px;border-radius:50%;margin:0 auto 15px;background:radial-gradient(circle at 35% 30%,#fff,#c7a0ff 18%,#7954bd 45%,#282047 72%);box-shadow:0 0 35px #a879ff77,0 0 80px #7c5bd633}
+h1{font-size:27px;margin:0 0 7px;letter-spacing:.08em}.muted{color:var(--muted)}.hero p{line-height:1.55;margin:0 auto;max-width:520px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.tile,.section{border:1px solid var(--line);background:#191528;border-radius:17px;padding:16px}.tile{min-height:112px}.tile .ico{font-size:23px}.tile h3{margin:8px 0 3px;font-size:16px}.tile p{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+.section{margin-top:15px}.section h2{font-size:18px;margin:0 0 12px}.nav{display:flex;gap:8px;overflow:auto;padding:14px 0 4px;position:sticky;top:67px;background:#100d1cf2;z-index:1}
+button{font:inherit;cursor:pointer}.nav button,.action{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:var(--panel2);color:var(--text);white-space:nowrap}.nav button.active,.primary{background:linear-gradient(110deg,#8e65ce,#5a8ac5);border:0;color:white}
+.view{display:none}.view.active{display:block}
+label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}input,textarea{width:100%;border:1px solid var(--line);background:#100d1c;color:var(--text);border-radius:11px;padding:12px;font:inherit}textarea{min-height:105px;resize:vertical}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.note{font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px}.output{white-space:pre-wrap;background:#100d1c;border:1px solid var(--line);padding:12px;border-radius:12px;margin-top:12px;min-height:45px}
+.chatlog{height:210px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:12px;background:#100d1c}.bubble{padding:9px 11px;border-radius:12px;margin:7px 0;max-width:90%;line-height:1.45}.bot{background:#29213d}.user{background:#30415a;margin-left:auto}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:25px 10px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:35px}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">AURA</div><div class="sub">PERSONAL AI STUDIO</div></div><span class="pill">PRIVATE-FIRST • BETA</span></header>
+<main>
+<section class="hero">
+<div class="orb"></div><h1>Welcome to AURA</h1>
+<p class="muted">Your personal space for AI conversations, creative ideas and image prompts. This is your first local prototype.</p>
+</section>
+<div class="grid">
+<div class="tile"><div class="ico">✦</div><h3>AI Assistant</h3><p>A place for your future AI chat connection.</p></div>
+<div class="tile"><div class="ico">▧</div><h3>Image Studio</h3><p>Create and save prompts for fictional character artwork.</p></div>
+<div class="tile"><div class="ico">◈</div><h3>Personal Memory</h3><p>Save preferences in this browser on this device.</p></div>
+<div class="tile"><div class="ico">♢</div><h3>Privacy</h3><p>Understand what stays on your tablet and what goes online.</p></div>
+</div>
+<div class="nav">
+<button class="active" data-view="home">Home</button><button data-view="chat">AI Chat</button><button data-view="images">Image Studio</button><button data-view="memory">Memory</button><button data-view="privacy">Privacy</button>
+</div>
+<section id="home" class="view active section"><h2>Your workspace</h2><p class="muted">AURA 1.0 is the foundation. The buttons below switch between working local tools and setup areas.</p><div class="actions"><button class="action primary" data-go="chat">Open AI Chat</button><button class="action" data-go="images">Open Image Studio</button></div><p class="note">AI chat and image generation are not connected yet. We'll add those connections in later steps, without putting secret API keys into a public webpage.</p></section>
+<section id="chat" class="view section"><h2>AI Assistant</h2><div class="chatlog" id="chatlog"><div class="bubble bot">Hello! I'm the AURA interface prototype. I can demonstrate the chat screen, but a real AI model has not been connected yet.</div></div><label for="chatinput">Your message</label><input id="chatinput" placeholder="Type a message…"><div class="actions"><button class="action primary" id="send">Send demo message</button><button class="action" id="clearChat">Clear chat</button></div><p class="note">Demo only: your message is shown in this screen; it is not sent to an AI service.</p></section>
+<section id="images" class="view section"><h2>Image Studio</h2><label for="subject">Fictional adult character / subject</label><input id="subject" placeholder="e.g. fictional adult actress at a film premiere"><label for="style">Style and scene</label><textarea id="style" placeholder="e.g. photorealistic editorial portrait, elegant red-carpet gown, cinematic lighting, tasteful fashion photography"></textarea><div class="actions"><button class="action primary" id="makePrompt">Build image prompt</button><button class="action" id="copyPrompt">Copy prompt</button></div><div class="output" id="promptout">Your prompt will appear here.</div><p class="note">This builds a text prompt only. An image-generation model has not been connected yet.</p></section>
+<section id="memory" class="view section"><h2>Personal Memory</h2><label for="memoryinput">A preference you want AURA to remember</label><textarea id="memoryinput" placeholder="e.g. I prefer dark purple interfaces and concise answers."></textarea><div class="actions"><button class="action primary" id="saveMemory">Save on this device</button><button class="action" id="showMemory">View saved memory</button><button class="action" id="deleteMemory">Delete saved memory</button></div><div class="output" id="memoryout">No memory displayed.</div><p class="note">This uses this browser's local storage. It may be cleared if you clear browser data, and it does not sync to other devices.</p></section>
+<section id="privacy" class="view section"><h2>Privacy controls</h2><p><strong>Current prototype:</strong> no AI provider is connected. Chat messages are demo-only. Saved memory stays in this browser's local storage.</p><p class="muted">When we connect an online AI service, the prompts you send may be processed by that provider. We'll review its privacy terms and use a secure connection method before enabling it.</p><p class="muted">Do not enter passwords, private documents, payment details or other sensitive information into a future AI chat unless you understand how that service handles data.</p><div class="actions"><button class="action" id="clearAll">Clear AURA local memory</button></div><div class="output" id="privacyout">Local memory has not been cleared.</div></section>
+<footer>AURA 1.0 • Local interface prototype • No AI service connected yet</footer>
+</main>
+<script>
+const views=[...document.querySelectorAll('.view')], nav=[...document.querySelectorAll('.nav button')];
+function go(id){views.forEach(v=>v.classList.toggle('active',v.id===id));nav.forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});}
+nav.forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+const log=document.getElementById('chatlog');
+document.getElementById('send').onclick=()=>{const i=document.getElementById('chatinput');if(!i.value.trim())return;const d=document.createElement('div');d.className='bubble user';d.textContent=i.value;log.appendChild(d);const r=document.createElement('div');r.className='bubble bot';r.textContent='This is the AURA demo interface. A real AI connection will be added in a later setup step.';log.appendChild(r);i.value='';log.scrollTop=log.scrollHeight;};
+document.getElementById('clearChat').onclick=()=>{log.innerHTML='<div class="bubble bot">Demo chat cleared. AURA is ready.</div>';};
+let built='';
+document.getElementById('makePrompt').onclick=()=>{const s=document.getElementById('subject').value.trim(),t=document.getElementById('style').value.trim();built=[s,t,'photorealistic editorial photography, professional lighting, detailed composition, high quality'].filter(Boolean).join(', ');document.getElementById('promptout').textContent=built||'Enter a subject and style first.';};
+document.getElementById('copyPrompt').onclick=async()=>{if(!built)return;try{await navigator.clipboard.writeText(built);document.getElementById('promptout').textContent=built+'\n\nCopied.';}catch(e){document.getElementById('promptout').textContent=built+'\n\nSelect and copy this text manually.';}};
+const key='aura_memory_v1';
+document.getElementById('saveMemory').onclick=()=>{const v=document.getElementById('memoryinput').value.trim();if(!v)return;localStorage.setItem(key,v);document.getElementById('memoryout').textContent='Saved on this device.';};
+document.getElementById('showMemory').onclick=()=>{document.getElementById('memoryout').textContent=localStorage.getItem(key)||'No saved memory found.';};
+function clearMemory(){localStorage.removeItem(key);document.getElementById('memoryout').textContent='Saved memory deleted.';}
+document.getElementById('deleteMemory').onclick=clearMemory;
+document.getElementById('clearAll').onclick=()=>{clearMemory();document.getElementById('privacyout').textContent='AURA local memory cleared from this browser.';};
+</script>
+</body>
+</html>
